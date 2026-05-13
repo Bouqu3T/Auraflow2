@@ -30,7 +30,7 @@ export default function CrystalsPage() {
       </div>
       
       <SearchBar
-        placeholder="搜索水晶名称、类型或五行属性"
+        placeholder="搜索水晶名称、颜色或五行属性"
         value={searchText}
         onChange={setSearchText}
         className="mb-6"
@@ -39,31 +39,23 @@ export default function CrystalsPage() {
       {filteredCrystals.length > 0 ? (
         <div className="space-y-4">
           {filteredCrystals.map((crystal) => (
-            <div key={crystal.id} className="card p-4">
+            <div key={crystal.crystal_id} className="card p-4">
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-lg font-medium text-primary">{crystal.name}</h3>
-                <span className="text-sm text-gray-500">{crystal.tier}</span>
+                <span className="text-sm text-gray-500">
+                  {crystal.price_level === 'low' ? '入门' : crystal.price_level === 'medium' ? '进阶' : '臻选'}
+                </span>
               </div>
               <div className="space-y-2">
                 <p className="text-sm">
-                  <span className="font-medium">类型:</span> {crystal.type} | 
-                  <span className="font-medium"> 五行:</span> {crystal.element}
+                  <span className="font-medium">五行:</span> {crystal.elements.join(', ')}
                 </p>
                 <p className="text-sm">
-                  <span className="font-medium">规格:</span> {crystal.size} | 
+                  <span className="font-medium">规格:</span> {crystal.bead_sizes.join('mm, ')}mm | 
                   <span className="font-medium"> 颜色:</span> {crystal.color}
                 </p>
-                <p className="text-sm">
-                  <span className="font-medium">价格:</span> {crystal.price.full}
-                </p>
                 <p className="text-xs text-gray-600 mt-2">
-                  <span className="font-medium">核心功用:</span> {crystal.effects}
-                </p>
-                <p className="text-xs text-gray-600 mt-2">
-                  <span className="font-medium">情绪价值:</span> {crystal.emotionalValue}
-                </p>
-                <p className="text-xs text-gray-600 mt-2">
-                  <span className="font-medium">适配客户:</span> {crystal.suitableFor}
+                  <span className="font-medium">核心功效:</span> {crystal.effects.join('、')}
                 </p>
               </div>
             </div>
