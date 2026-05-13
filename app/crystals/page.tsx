@@ -11,8 +11,9 @@ export default function CrystalsPage() {
   
   const filteredCrystals = crystalsData.filter(crystal => 
     crystal.name.toLowerCase().includes(searchText.toLowerCase()) ||
-    crystal.type.toLowerCase().includes(searchText.toLowerCase()) ||
-    crystal.element.toLowerCase().includes(searchText.toLowerCase())
+    crystal.color.toLowerCase().includes(searchText.toLowerCase()) ||
+    crystal.elements.some(el => el.toLowerCase().includes(searchText.toLowerCase())) ||
+    crystal.effects.some(effect => effect.toLowerCase().includes(searchText.toLowerCase()))
   );
   
   return (
