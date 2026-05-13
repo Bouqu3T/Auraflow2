@@ -1,4 +1,4 @@
-import crystalsData from '@/data/crystals.json';
+import crystalsData from '../data/crystals.json';
 
 interface Crystal {
   crystal_id: string;

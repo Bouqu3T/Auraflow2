@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { SearchBar, Empty, Button } from 'antd-mobile';
 import { useRouter } from 'next/navigation';
-import crystalsData from '../../src/data/crystals.json';
+import crystalsData from '../../data/crystals.json';
 
 export default function CrystalsPage() {
   const [searchText, setSearchText] = useState('');
